@@ -1,3 +1,4 @@
+import Weekday from './Weekday'
 
 type Props = {}
 
@@ -9,7 +10,7 @@ const WeekCalendar = (props: Props) => {
             {weekDays.map((day, index) => {
                 return (
                     <div className="weekday" key={index}>
-                        <h3>{day}</h3>
+                        <Weekday day={day} />
                     </div>
                 )
             }

@@ -1,3 +1,5 @@
+import Chore from "./Chore"
+
 type Props = {}
 const ChoreContainer = (props: Props) => {
     const chores = [
@@ -15,7 +17,7 @@ const ChoreContainer = (props: Props) => {
                 {chores.map(chore => {
                     return (
                         <div className="chore_element">
-                            <h3>{chore}</h3>
+                            <Chore chore={chore} />
                         </div>
                     )
                 })}
