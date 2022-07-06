@@ -1,4 +1,4 @@
-import { useDrag } from 'react-dnd'
+import { useDrag, useDrop } from 'react-dnd'
 
 type Props = {
   id: number,
@@ -8,14 +8,14 @@ type Props = {
 const Chore = (props: Props) => {
   const [{ isDragging }, drag] = useDrag({
     type: 'chore',
-    item: { chore: props.name, id: props.id },
-    collect: monitor => ({
-      isDragging: monitor.isDragging()
-    })
+    item: { name: props.name, id: props.id },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
   })
 
   return (
-    <div ref={drag} style={{border: isDragging ? "4px solid red" : "0px"}}>{props.name}</div>
+    <div className='chore_element' ref={drag} style={{border: isDragging ? "1px solid lightgreen" : "1px solid lightgrey"}}>{props.name}</div>
   )
 }
 export default Chore
