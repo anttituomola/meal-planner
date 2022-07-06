@@ -1,27 +1,20 @@
 import Chore from "./Chore"
+import cuid from "cuid"
+import { mandatoryChores, ChoreType } from "../chores/mandatoryChores"
 
 type Props = {}
 const ChoreContainer = (props: Props) => {
-    const chores = [
-        "Gym: legs",
-        "Gym: abs",
-        "Gym: arms",
-        "Clean kitchen",
-        "Clean toilets",
-        "Clean bedroom",
-        "Prepare meals",
-    ]
-
     return (
         <div className="chore_container">
-                {chores.map(chore => {
-                    return (
-                        <div className="chore_element">
-                            <Chore chore={chore} />
-                        </div>
-                    )
-                })}
-            </div>
+            {mandatoryChores.map(chore => {
+                return (
+                    <div className="chore_element" key={cuid()}>
+                        <Chore name={chore.name} id={chore.id} />
+                    </div>
+                )
+            })}
+        </div>
     )
 }
+
 export default ChoreContainer

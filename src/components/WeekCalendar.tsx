@@ -1,17 +1,17 @@
 import Weekday from './Weekday'
+import cuid from "cuid"
+
 
 type Props = {}
 
 const WeekCalendar = (props: Props) => {
-  const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
     return (
         <div className="weekdays_container">
             {weekDays.map((day, index) => {
                 return (
-                    <div className="weekday" key={index}>
-                        <Weekday day={day} />
-                    </div>
+                    <Weekday day={day} key={cuid()}/>
                 )
             }
             )}
