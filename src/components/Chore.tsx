@@ -1,4 +1,4 @@
-import { useDrag, useDrop } from 'react-dnd'
+import { useDrag } from 'react-dnd'
 import { ChoreType } from "../chores/mandatoryChores"
 
 type Props = {
