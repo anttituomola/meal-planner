@@ -1,16 +1,16 @@
+import { ChoreType } from "../chores/mandatoryChores"
 import Chore from "./Chore"
-import { mandatoryChores } from "../chores/mandatoryChores"
-import { useState } from "react"
-import {ChoreType} from "../chores/mandatoryChores"
 
-type Props = {}
-const ChoreContainer = (props: Props) => {
-    const [chores, setChores] = useState<ChoreType[]>(mandatoryChores)
+type Props = {
+    chores: ChoreType[],
+}
+const ChoreContainer = ({ chores }: Props) => {
+
     return (
         <div className="chore_container">
-            {chores.map(chore => {
+            {chores.filter(chore => chore.placed === false).map(chore => {
                 return (
-                        <Chore name={chore.name} id={chore.id} key={chore.id}/>
+                    <Chore chore={chore} key={chore.id} />
                 )
             })}
         </div>

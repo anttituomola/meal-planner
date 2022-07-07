@@ -1,21 +1,21 @@
 import { useDrag, useDrop } from 'react-dnd'
+import { ChoreType } from "../chores/mandatoryChores"
 
 type Props = {
-  id: number,
-  name: string
+  chore: ChoreType,
 }
 
-const Chore = (props: Props) => {
+const Chore = ({ chore: { name, id } }: Props) => {
   const [{ isDragging }, drag] = useDrag({
     type: 'chore',
-    item: { name: props.name, id: props.id },
+    item: { name, id },
     collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
+      isDragging: monitor.isDragging()
     }),
   })
 
   return (
-    <div className='chore_element' ref={drag} style={{border: isDragging ? "1px solid lightgreen" : "1px solid lightgrey"}}>{props.name}</div>
+    <div className='chore_element' ref={drag} style={{ border: isDragging ? "1px solid lightgreen" : "1px solid lightgrey" }}>{name}</div>
   )
 }
 export default Chore
