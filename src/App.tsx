@@ -13,7 +13,7 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <div className="App">
         <WeekCalendar setChores={setChores} chores={chores} />
-        <ChoreContainer chores={chores} />
+        <ChoreContainer setChores={setChores} chores={chores} />
       </div>
     </DndProvider>
   )

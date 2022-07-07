@@ -32,7 +32,26 @@
   align-items: center;
   justify-content: center;
   gap: 1em;
-  margin: 1em;
+  margin: 0 auto;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+  max-width: 60%;
+  min-height: 3em;
+}
+
+.chore_container_over {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  margin: 0 auto;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+  max-width: 60%;
+  min-height: 3em;
+  background-color: rgb(229, 246, 229);
 }
 
 .chore_element {

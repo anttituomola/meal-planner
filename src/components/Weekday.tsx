@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useDrop } from 'react-dnd'
 import cuid from "cuid"
 import { ChoreType } from "../chores/mandatoryChores"
@@ -11,7 +10,6 @@ type Props = {
 }
 
 const Weekday = (props: Props) => {
-    const [weekdayChores, setWeekdayChores] = useState<ChoreType[]>([])
 
     const [{ isOver }, drop] = useDrop({
         accept: 'chore',
@@ -22,7 +20,6 @@ const Weekday = (props: Props) => {
                     chore.placed = true
                     console.log(chore)
                 }
-                console.log(props.chores)
                 return chore
             }))
         },
@@ -35,7 +32,7 @@ const Weekday = (props: Props) => {
     return (
         <div className={isOver ? "weekday-over" : "weekday"} ref={drop} key={cuid()}>
             <div>{props.day}</div>
-            {props.chores.filter(chore => chore.placed === true && chore.location === props.day).map(chore => <Chore chore={chore}/>)}
+            {props.chores.filter(chore => chore.placed === true && chore.location === props.day).map(chore => <Chore key={chore.id} chore={chore}/>)}
         </div>
     )
 }
