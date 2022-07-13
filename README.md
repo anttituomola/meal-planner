@@ -1,6 +1,2 @@
-# Drag & Drop in React app
-Simple web app to demonstrate the useage of React DnD library.
-
-[Check the demo app](https://weekly-chores.vercel.app/)
-
-[Read the blog post in Finnish](https://anttituomola.fi/reactin-drag-and-drop-eli-raahaa-ja-pudota/)
+# Meal planner
+A small drag&drop app to plan your weekly meal and generate a shopping list based on the plan.

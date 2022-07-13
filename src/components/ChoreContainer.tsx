@@ -1,21 +1,21 @@
-import { ChoreType } from "../chores/mandatoryChores"
-import Chore from "./Chore"
+import RecipeEl from "./RecipeEl"
 import { useDrop } from 'react-dnd'
+import { Recipe } from "../recipes/types"
 
 type Props = {
-    setChores: React.Dispatch<React.SetStateAction<ChoreType[]>>,
-    chores: ChoreType[],
+    setRecipes: React.Dispatch<React.SetStateAction<Recipe[]>>,
+    recipes: Recipe[],
 }
-const ChoreContainer = ({ setChores, chores }: Props) => {
+const ChoreContainer = ({ setRecipes, recipes }: Props) => {
     const [{ isOver }, drop] = useDrop({
         accept: 'chore',
-        drop: (item: ChoreType, monitor) => {
-            setChores(chores.map(chore => {
-                if (chore.id === item.id) {
-                chore.placed = false
-                chore.location = "ChoreContainer"
+        drop: (item: Recipe, monitor) => {
+            setRecipes(recipes.map(recipe => {
+                if (recipe.id === item.id) {
+                    recipe.placed = false
+                    recipe.location = "ChoreContainer"
                 }
-                return chore
+                return recipe
             }
             ))
         },
@@ -26,9 +26,9 @@ const ChoreContainer = ({ setChores, chores }: Props) => {
 
     return (
         <div className={isOver ? "chore_container_over" : "chore_container"} ref={drop}>
-            {chores.filter(chore => chore.placed === false && chore.location === "ChoreContainer").map(chore => {
+            {recipes.filter(recipe => recipe.placed === false && recipe.location === "ChoreContainer").map(recipe => {
                 return (
-                    <Chore chore={chore} key={chore.id} />
+                    <RecipeEl recipe={recipe} key={recipe.id} />
                 )
             })}
         </div>

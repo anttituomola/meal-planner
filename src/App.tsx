@@ -4,16 +4,17 @@ import WeekCalendar from './components/WeekCalendar'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { useState } from 'react'
-import { mandatoryChores, ChoreType } from "./chores/mandatoryChores"
+import { Recipe } from "./recipes/types"
+import { recipes } from "./recipes/recipes"
 
 function App() {
-  const [chores, setChores] = useState<ChoreType[]>(mandatoryChores)
+  const [stateRecipes, setRecipes] = useState<Recipe[]>(recipes)
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="App">
-        <WeekCalendar setChores={setChores} chores={chores} />
-        <ChoreContainer setChores={setChores} chores={chores} />
+        <WeekCalendar setRecipes={setRecipes} recipes={stateRecipes} />
+        <ChoreContainer setRecipes={setRecipes} recipes={stateRecipes} />
       </div>
     </DndProvider>
   )

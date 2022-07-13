@@ -1,12 +1,13 @@
 import { useDrop } from 'react-dnd'
 import cuid from "cuid"
 import { ChoreType } from "../chores/mandatoryChores"
-import Chore from "./Chore"
+import { Recipe } from "../recipes/types"
+import RecipeEl from "./RecipeEl"
 
 type Props = {
     day: string,
-    setChores: React.Dispatch<React.SetStateAction<ChoreType[]>>,
-    chores: ChoreType[]
+    setRecipes: React.Dispatch<React.SetStateAction<Recipe[]>>,
+    recipes: Recipe[]
 }
 
 const Weekday = (props: Props) => {
@@ -14,13 +15,13 @@ const Weekday = (props: Props) => {
     const [{ isOver }, drop] = useDrop({
         accept: 'chore',
         drop: (item: ChoreType, monitor) => {
-            props.setChores(props.chores.map(chore => {
-                if (chore.id === item.id) {
-                    chore.location = props.day
-                    chore.placed = true
-                    console.log(chore)
+            props.setRecipes(props.recipes.map(recipe => {
+                if (recipe.id === item.id) {
+                    recipe.location = props.day
+                    recipe.placed = true
+                    console.log(recipe)
                 }
-                return chore
+                return recipe
             }))
         },
         collect: monitor => ({
@@ -32,7 +33,7 @@ const Weekday = (props: Props) => {
     return (
         <div className={isOver ? "weekday-over" : "weekday"} ref={drop} key={cuid()}>
             <div>{props.day}</div>
-            {props.chores.filter(chore => chore.placed === true && chore.location === props.day).map(chore => <Chore key={chore.id} chore={chore}/>)}
+            {props.recipes.filter(recipe => recipe.placed === true && recipe.location === props.day).map(recipe => <RecipeEl key={recipe.id} recipe={recipe} />)}
         </div>
     )
 }
