@@ -1,6 +1,5 @@
 import { useDrop } from 'react-dnd'
 import cuid from "cuid"
-import { ChoreType } from "../chores/mandatoryChores"
 import { Recipe } from "../recipes/types"
 import RecipeEl from "./RecipeEl"
 
@@ -14,7 +13,7 @@ const Weekday = (props: Props) => {
 
     const [{ isOver }, drop] = useDrop({
         accept: 'chore',
-        drop: (item: ChoreType, monitor) => {
+        drop: (item: Recipe, monitor) => {
             props.setRecipes(props.recipes.map(recipe => {
                 if (recipe.id === item.id) {
                     recipe.location = props.day
